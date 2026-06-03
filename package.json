@@ -5,7 +5,15 @@
   "main": "app.js",
   "scripts": {
     "start": "node main",
-    "test": "jest"
+    "test": "jest",
+    "test-jenkins": "jest --reporters=default --reporters=jest-junit",
+    "coverage-jenkins": "jest --reporters=default --reporters=jest-junit --coverage --coverageReporters=text --coverageReporters=html --coverageDirectory=./coverage/",
+    "lint": "eslint src/**/*.js -f checkstyle -o coverage/eslint-result.xml"
+  },
+  "jest-junit": {
+    "outputDirectory": "./coverage/",
+    "outputName": "test.results.xml",
+    "usePathForSuiteName": "true"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +22,11 @@
   },
   "devDependencies": {
     "jest": "^27.5.1",
-    "supertest": "^6.2.2"
+    "jest-junit": "^13.0.0",
+    "supertest": "^6.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
   }
 }
